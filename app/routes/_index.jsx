@@ -1,3 +1,5 @@
+import { Link } from "@remix-run/react";
+
 export const meta = () => {
   return [
     { title: "New Remix SPA" },
@@ -25,6 +27,11 @@ export default function Index() {
           </a>
         </li>
       </ul>
+      <div>
+        <Link to="/memo-list" className="navigation__link">
+          メモ一覧
+        </Link>
+      </div>
     </div>
   );
 }

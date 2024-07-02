@@ -7,11 +7,13 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import db from "../firebase";
+import { Link } from "react-router-dom";
 
 const DemoTemp2 = () => {
   const [posts, setPosts] = useState([]);
   const [titeles, setTiteles] = useState([]);
   const [texts, setTexts] = useState([]);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -43,11 +45,14 @@ const DemoTemp2 = () => {
         console.error("The post doesn't have an id");
       }
     }
+    setMessage("更新が正しく行われました");
+    setTimeout(() => setMessage(""), 3000);
   };
 
   return (
     <div>
       <h1>React + Firebase Firestore: DemoTemp2</h1>
+      <Link to="/demo-temp1">Go to DemoTemp1</Link>
       {posts.map((post, index) => (
         <div key={index}>
           <p>
@@ -80,6 +85,7 @@ const DemoTemp2 = () => {
         </div>
       ))}
       <button onClick={updatePosts}>更新</button>
+      {message && <div>{message}</div>}
     </div>
   );
 };

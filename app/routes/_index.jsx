@@ -32,6 +32,16 @@ export default function Index() {
           メモ一覧
         </Link>
       </div>
+      <div>
+        <Link to="/demo-temp1" className="">
+          demo-temp1
+        </Link>
+      </div>
+      <div>
+        <Link to="/demo-temp2" className="">
+          demo-temp2
+        </Link>
+      </div>
     </div>
   );
 }

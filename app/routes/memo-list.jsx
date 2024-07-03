@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PullDown from "./pulldown";
 
 const Table = ({ data }) => {
@@ -40,15 +40,20 @@ const makeDisplayData = (data, option) => {
 };
 
 export default function Index() {
+  const [selectedOption, setSelectedOption] = useState("");
+
   return (
     <>
       <h1>メモリストのページです</h1>
       <div>
-        <PullDown></PullDown>
+        <PullDown
+          selectedOption={selectedOption}
+          setSelectedOption={setSelectedOption}
+        ></PullDown>
       </div>
 
       <div className="memos-table">
-        <Table data={makeDisplayData(sampleData, "就活")}></Table>
+        <Table data={makeDisplayData(sampleData, selectedOption)}></Table>
       </div>
     </>
   );

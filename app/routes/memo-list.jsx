@@ -3,6 +3,7 @@ import { Link } from "@remix-run/react";
 import PullDown from "./pulldown";
 import { useNavigate } from "react-router-dom";
 
+// メモ一覧表の作成
 const Table = ({ data }) => {
   return (
     <table>
@@ -28,6 +29,7 @@ const Table = ({ data }) => {
   );
 };
 
+// サンプルデータ
 const sampleData = [
   {
     title: "○✕商事 ES",
@@ -64,24 +66,43 @@ const makeDisplayData = (data, option) => {
 };
 
 export default function Index() {
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOptionFilter, setSelectedOptionFilter] = useState("");
+  const [selectedOptionNewMemo, setselectedOptionNewMemo] = useState("");
 
   const navigate = useNavigate();
 
   return (
     <>
       <h1>メモ一覧</h1>
-      <button onClick={() => navigate("/calender")}>Calender</button>
-      <button>Memo List</button>
+      {/* カレンダー・メモ一覧切り替えボタン */}
       <div>
-        <PullDown
-          selectedOption={selectedOption}
-          setSelectedOption={setSelectedOption}
-        ></PullDown>
+        <button onClick={() => navigate("/calender")}>Calender</button>
+        <button>Memo List</button>
       </div>
 
+      {/* 新規作成 */}
+      <div>
+        <h2>新規作成</h2>
+        <PullDown
+          labelText="テンプレートの種類を選択："
+          selectedOption={selectedOptionNewMemo}
+          setSelectedOption={setselectedOptionNewMemo}
+        ></PullDown>
+
+        <button onClick={() => navigate("/demo-temp2")}>新規作成</button>
+      </div>
+
+      {/* メモ一覧 */}
+      <div>
+        <h2>メモ一覧</h2>
+        <PullDown
+          labelText="テンプレートでフィルター："
+          selectedOption={selectedOptionFilter}
+          setSelectedOption={setSelectedOptionFilter}
+        ></PullDown>
+      </div>
       <div className="memos-table">
-        <Table data={makeDisplayData(sampleData, selectedOption)}></Table>
+        <Table data={makeDisplayData(sampleData, selectedOptionFilter)}></Table>
       </div>
     </>
   );

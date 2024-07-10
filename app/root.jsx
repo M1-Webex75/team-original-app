@@ -6,6 +6,8 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
+import TempSyukatu from "./routes/temp-syukatu.$id";
+
 export function Layout({ children }) {
   return (
     <html lang="en">

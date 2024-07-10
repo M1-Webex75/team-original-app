@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 
-const PullDown = ({ selectedOption, setSelectedOption }) => {
+const PullDown = ({ labelText = "", selectedOption, setSelectedOption }) => {
   const handleChange = (e) => {
     setSelectedOption(e.target.value);
   };
@@ -13,7 +13,6 @@ const PullDown = ({ selectedOption, setSelectedOption }) => {
         <option value="就活">就活</option>
         <option value="日記">日記</option>
       </select>
-      <p>Selected option: {selectedOption}</p>
 
       <table></table>
     </div>

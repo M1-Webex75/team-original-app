@@ -6,7 +6,7 @@ export default function Index() {
     <>
       <h1>カレンダー</h1>
       <button>Calender</button>
-      <button onClick={() => navigate("/memo-list")}>Memo List</button>
+      <button onClick={() => navigate("/demo-temp1")}>Memo List</button>
     </>
   );
 }

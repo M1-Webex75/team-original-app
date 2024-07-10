@@ -7,7 +7,7 @@ const PullDown = ({ labelText = "", selectedOption, setSelectedOption }) => {
 
   return (
     <div>
-      <label htmlFor="options">テンプレートでフィルター:</label>
+      <label htmlFor="options">{labelText}</label>
       <select id="options" value={selectedOption} onChange={handleChange}>
         <option value="">未選択</option>
         <option value="就活">就活</option>

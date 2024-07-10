@@ -10,6 +10,11 @@
     "start": "vite preview"
   },
   "dependencies": {
+    "@fullcalendar/core": "^6.1.14",
+    "@fullcalendar/daygrid": "^6.1.14",
+    "@fullcalendar/list": "^6.1.14",
+    "@fullcalendar/react": "^6.1.14",
+    "@fullcalendar/timegrid": "^6.1.14",
     "@remix-run/node": "^2.9.2",
     "@remix-run/react": "^2.9.2",
     "@remix-run/serve": "^2.9.2",

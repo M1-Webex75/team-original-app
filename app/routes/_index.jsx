@@ -1,4 +1,5 @@
 import { Link } from "@remix-run/react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 export const meta = () => {
   return [
@@ -40,6 +41,11 @@ export default function Index() {
       <div>
         <Link to="/demo-temp2" className="">
           demo-temp2
+        </Link>
+      </div>
+      <div>
+        <Link to="/temp-syukatu" className="">
+          temp-syukatu
         </Link>
       </div>
     </div>

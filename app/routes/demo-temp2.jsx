@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 const DemoTemp2 = () => {
   const [posts, setPosts] = useState([]);
-  const [titeles, setTiteles] = useState([]);
+  const [titles, setTitles] = useState([]);
   const [texts, setTexts] = useState([]);
   const [message, setMessage] = useState("");
 
@@ -27,7 +27,7 @@ const DemoTemp2 = () => {
 
   useEffect(() => {
     if (posts.length > 0) {
-      setTiteles(posts.map((post) => post.titele || ""));
+      setTitles(posts.map((post) => post.title || ""));
       setTexts(posts.map((post) => post.text || ""));
     }
   }, [posts]);
@@ -37,7 +37,7 @@ const DemoTemp2 = () => {
       if (posts[i].id) {
         // Firestoreのデータを更新
         await setDoc(doc(db, "posts", posts[i].id), {
-          titele: titeles[i],
+          title: titles[i],
           text: texts[i],
           timestamp: serverTimestamp(),
         });
@@ -56,17 +56,17 @@ const DemoTemp2 = () => {
       {posts.map((post, index) => (
         <div key={index}>
           <p>
-            {post.titele}, {post.text}
+            {post.title}, {post.text}
           </p>
           <label>
-            Titele:
+            Title:
             <input
               type="text"
-              value={titeles[index] || ""}
+              value={titles[index] || ""}
               onChange={(e) => {
-                const newTiteles = [...titeles];
-                newTiteles[index] = e.target.value;
-                setTiteles(newTiteles);
+                const newTitles = [...titles];
+                newTitles[index] = e.target.value;
+                setTitles(newTitles);
               }}
             />
           </label>

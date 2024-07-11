@@ -8,14 +8,16 @@ import {
 } from "firebase/firestore";
 import db from "../firebase";
 import { Link, useParams } from "react-router-dom";
+import PullDown from "./pulldown";
 
-const TempNikki = () => {
+const TempNo = () => {
   const { id } = useParams(); // 選択したデータのIDを取得
   const [post, setPost] = useState(null);
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [date, setDate] = useState("");
   const [message, setMessage] = useState("");
+  const [selectedOptionNewMemo, setselectedOptionNewMemo] = useState("");
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -64,11 +66,16 @@ const TempNikki = () => {
 
   return (
     <div>
-      <h1>日記</h1>
+      <h1>未選択</h1>
       <Link to="/demo-temp1">戻る</Link>
 
       {post && (
         <div>
+          <PullDown
+            labelText="テンプレートの種類を選択："
+            selectedOption={selectedOptionNewMemo}
+            setSelectedOption={setselectedOptionNewMemo}
+          ></PullDown>
           <p>
             {post.title}, {post.text}
           </p>
@@ -104,4 +111,4 @@ const TempNikki = () => {
   );
 };
 
-export default TempNikki;
+export default TempNo;

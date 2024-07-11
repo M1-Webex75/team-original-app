@@ -3,15 +3,55 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import jaLocale from "@fullcalendar/core/locales/ja";
 import timeGridPlugin from "@fullcalendar/timegrid";
+import React, { useEffect, useState } from "react";
+import {
+  collection,
+  onSnapshot,
+  query,
+  addDoc,
+  doc,
+  setDoc,
+  Timestamp,
+  orderBy,
+} from "firebase/firestore";
+import db from "../firebase";
+import { Link } from "@remix-run/react";
+import PullDown from "./pulldown";
 
 const language = "ja";
 export default function Index() {
   const navigate = useNavigate();
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    const q = query(collection(db, "posts"), orderBy("date", "asc"));
+    const unsub = onSnapshot(q, (querySnapshot) => {
+      const posts = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        posts.push({
+          title: data.title,
+          start: data.date.toDate().toISOString().split("T")[0],
+          color:
+            data.template === "就活"
+              ? "blue"
+              : data.template === "日記"
+              ? "green"
+              : "red",
+        });
+      });
+      setEvents(posts);
+    });
+
+    // クリーンアップ関数で監視を解除
+    return () => unsub();
+  }, []);
+
   return (
     <>
       <h1>カレンダー</h1>
       <button>Calender</button>
-      <button onClick={() => navigate("/memo-list")}>Memo List</button>
+      <button onClick={() => navigate("/demo-temp1")}>Memo List</button>
       <div>
         <FullCalendar
           plugins={[dayGridPlugin, timeGridPlugin]}
@@ -24,15 +64,7 @@ export default function Index() {
             right: "dayGridMonth,timeGridWeek",
           }}
           // イベントを指定
-          events={[
-            { title: "TEST1", start: "2024-07-12" },
-            { title: "TEST2", start: "2024-07-14" },
-            {
-              title: "TEST3",
-              start: "2024-07-15",
-              end: "2024-07-17",
-            },
-          ]}
+          events={events}
         />
       </div>
     </>

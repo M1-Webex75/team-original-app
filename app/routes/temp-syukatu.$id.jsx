@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+  setDoc,
+  serverTimestamp,
+  Timestamp,
+} from "firebase/firestore";
 import db from "../firebase";
 import { Link, useParams } from "react-router-dom";
 
@@ -8,6 +14,7 @@ const TempSyukatu = () => {
   const [post, setPost] = useState(null);
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
+  const [date, setDate] = useState("");
   const [message, setMessage] = useState("");
 
   useEffect(() => {
@@ -17,6 +24,9 @@ const TempSyukatu = () => {
       setPost(postData);
       setTitle(postData.title || "");
       setText(postData.text || "");
+      setDate(
+        postData.date ? postData.date.toDate().toISOString().split("T")[0] : ""
+      );
     };
     fetchPost();
   }, [id]);
@@ -24,13 +34,29 @@ const TempSyukatu = () => {
   const updatePost = async () => {
     if (post.id) {
       // Firestoreのデータを更新
-      await setDoc(doc(db, "posts", post.id), {
-        title: title,
-        text: text,
-        timestamp: serverTimestamp(),
-      });
-      setMessage("更新が正しく行われました");
-      setTimeout(() => setMessage(""), 3000);
+      const updatedData = {};
+      if (title !== post.title) {
+        updatedData.title = title;
+      }
+      if (text !== post.text) {
+        updatedData.text = text;
+      }
+      if (
+        date !==
+        (post.date ? post.date.toDate().toISOString().split("T")[0] : "")
+      ) {
+        updatedData.date = Timestamp.fromDate(new Date(date));
+      }
+      if (selectedOptionNewMemo !== post.template) {
+        updatedData.template = selectedOptionNewMemo;
+      }
+
+      if (Object.keys(updatedData).length > 0) {
+        updatedData.timestamp = serverTimestamp();
+        await setDoc(doc(db, "posts", post.id), updatedData, { merge: true });
+        setMessage("更新が正しく行われました");
+        setTimeout(() => setMessage(""), 3000);
+      }
     } else {
       console.error("The post doesn't have an id");
     }
@@ -60,6 +86,14 @@ const TempSyukatu = () => {
               type="text"
               value={text}
               onChange={(e) => setText(e.target.value)}
+            />
+          </label>
+          <label>
+            Date:
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
             />
           </label>
         </div>

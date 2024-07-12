@@ -143,16 +143,17 @@ export default function DemoTemp1() {
               date: Timestamp.now(),
               template: selectedOptionNewMemo,
               timestamp: Timestamp.now(),
+              text: "",
               // 他の必要なフィールド...
             };
 
             // ページ遷移
-            if (selectedOptionNewMemo === "就活") {
-              newMemoData.linkTo = "/temp-syukatu";
-              navigate("/temp-syukatu");
-            } else {
-              navigate("/demo-temp2");
-            }
+            // if (selectedOptionNewMemo === "就活") {
+            //   newMemoData.linkTo = "/temp-syukatu";
+            //   navigate("/temp-syukatu");
+            // } else {
+            //   navigate("/demo-temp2");
+            // }
 
             // Firebaseに新しいメモを保存
             await saveDataToFirebase(newMemoData);

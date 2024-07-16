@@ -10,7 +10,7 @@ import db from "../firebase";
 import { Link, useParams } from "react-router-dom";
 
 const TempSyukatu = () => {
-  const { id } = useParams(); // 選択したデータのIDを取得
+  const { id } = useParams();
   const [post, setPost] = useState(null);
   const [title, setTitle] = useState("");
   const [text1, setText1] = useState("");
@@ -20,7 +20,6 @@ const TempSyukatu = () => {
   const [date, setDate] = useState("");
   const [message, setMessage] = useState("");
   const [fields, setFields] = useState([]);
-  //const [selectedOptionNewMemo, setSelectedOptionNewMemo] = useState("");
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -35,7 +34,14 @@ const TempSyukatu = () => {
       setDate(
         postData.date ? postData.date.toDate().toISOString().split("T")[0] : ""
       );
-      setFields(postData.fields || []); // Firebaseから取得したfieldsデータをセット
+      setFields(
+        postData.fields
+          ? postData.fields.map((text, index) => ({
+              text,
+              name: `text${index}`,
+            }))
+          : []
+      );
     };
     fetchPost();
   }, [id]);
@@ -52,7 +58,6 @@ const TempSyukatu = () => {
 
   const updatePost = async () => {
     if (post.id) {
-      // Firestoreのデータを更新
       const updatedData = {};
       if (title !== post.title) {
         updatedData.title = title;
@@ -76,7 +81,7 @@ const TempSyukatu = () => {
         updatedData.date = Timestamp.fromDate(new Date(date));
       }
       if (fields !== post.fields) {
-        updatedData.fields = fields.map((field) => field.text); // テキストボックスの内容を保存
+        updatedData.fields = fields.map((field) => field.text);
       }
 
       if (Object.keys(updatedData).length > 0) {
@@ -147,14 +152,16 @@ const TempSyukatu = () => {
             />
           </label>
           {fields.map((field, index) => (
-            <label key={index}>
-              {field.name}:
-              <input
-                type="text"
-                value={field.text}
-                onChange={(e) => handleFieldChange(index, e)}
-              />
-            </label>
+            <div key={index}>
+              <label>
+                {field.name}:
+                <input
+                  type="text"
+                  value={field.text}
+                  onChange={(e) => handleFieldChange(index, e)}
+                />
+              </label>
+            </div>
           ))}
         </div>
       )}

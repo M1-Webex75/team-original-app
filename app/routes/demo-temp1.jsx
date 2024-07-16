@@ -6,6 +6,7 @@ import {
   addDoc,
   doc,
   setDoc,
+  deleteDoc,
   Timestamp,
   orderBy,
 } from "firebase/firestore";
@@ -53,6 +54,10 @@ const Table = ({ data, updateTimestamp }) => {
               <td>
                 {new Date(item.timestamp.seconds * 1000).toLocaleDateString()}
               </td>
+              <td>
+                <button onClick={() => deletePost(item.id)}>削除</button>{" "}
+                {/* 追加 */}
+              </td>
             </tr>
           );
         })}
@@ -71,6 +76,12 @@ const makeDisplayData = (data, option) => {
     return data;
   } else {
     return data.filter((item) => item.template === option);
+  }
+};
+
+const deletePost = async (id) => {
+  if (window.confirm("Are you sure?")) {
+    await deleteDoc(doc(db, "posts", id));
   }
 };
 

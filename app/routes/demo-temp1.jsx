@@ -13,7 +13,7 @@ import db from "../firebase";
 import { Link } from "@remix-run/react";
 import PullDown from "./pulldown";
 import { useNavigate } from "react-router-dom";
-import "../style-demo-temp1.css";
+import styles from "../style-demo-temp1.css";
 
 const Table = ({ data, updateTimestamp }) => {
   return (
@@ -179,7 +179,7 @@ export default function DemoTemp1() {
       </div>
 
       {/* メモ一覧 */}
-      <div className="memo-list-section">
+      <div className={"memo-list-section"}>
         <h2>メモ一覧</h2>
         <div className="sort-section">
           ソート：

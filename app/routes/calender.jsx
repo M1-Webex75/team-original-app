@@ -17,6 +17,7 @@ import {
 import db from "../firebase";
 import { Link } from "@remix-run/react";
 import PullDown from "./pulldown";
+import "../style-calender.css";
 
 const language = "ja";
 export default function Index() {
@@ -49,9 +50,18 @@ export default function Index() {
 
   return (
     <>
-      <h1>カレンダー</h1>
-      <button>Calender</button>
-      <button onClick={() => navigate("/demo-temp1")}>Memo List</button>
+      <div className="header-section">
+        <div className="app-title">
+          <h1>メモカレ</h1>
+        </div>
+        <button className="calender-button">Calender</button>
+        <button
+          className="memolist-button"
+          onClick={() => navigate("/demo-temp1")}
+        >
+          Memo List
+        </button>
+      </div>
       <div>
         <FullCalendar
           plugins={[dayGridPlugin, timeGridPlugin]}

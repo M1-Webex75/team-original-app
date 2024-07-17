@@ -27,6 +27,7 @@ const Table = ({ data, updateTimestamp }) => {
           <th>Date</th>
           <th>template</th>
           <th>Timestamp</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -42,7 +43,7 @@ const Table = ({ data, updateTimestamp }) => {
 
           return (
             <tr key={item.title}>
-              <td>
+              <td className="title-column">
                 <Link
                   to={`/${linkPath}/${item.id}`}
                   onClick={() => updateTimestamp(item.id)}
@@ -50,15 +51,23 @@ const Table = ({ data, updateTimestamp }) => {
                   {item.title}
                 </Link>
               </td>
-              <td onClick={() => updateTimestamp(item.id)}>
+              <td
+                className="date-column"
+                onClick={() => updateTimestamp(item.id)}
+              >
                 {new Date(item.date.seconds * 1000).toLocaleDateString()}
               </td>
-              <td>{item.template}</td>
-              <td>
+              <td className="template-column">{item.template}</td>
+              <td className="timestamp-column">
                 {new Date(item.timestamp.seconds * 1000).toLocaleDateString()}
               </td>
-              <td>
-                <button onClick={() => deletePost(item.id)}>削除</button>{" "}
+              <td className="delete-button-column">
+                <button
+                  className="delete-button"
+                  onClick={() => deletePost(item.id)}
+                >
+                  削除
+                </button>{" "}
                 {/* 追加 */}
               </td>
             </tr>

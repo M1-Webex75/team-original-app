@@ -159,6 +159,16 @@ h2 {
   background-color: white;
 }
 
+.delete-button {
+  font-weight: bold;
+  background: #2c3e50;
+  border: 2px solid #2c3e50;
+  color: white;
+  transition: 0.5s;
+  height: 30px;
+  padding: 0;
+}
+
 /* フィルターセクション */
 
 .sort-target-button,
@@ -176,6 +186,43 @@ h2 {
 .sort-ascdesc-button:hover {
   background-color: #151e27;
   border: 2px solid #151e27;
+}
+
+/* 削除ボタン */
+.delete-button {
+  font-weight: bold;
+  background: #2c3e50;
+  border: 2px solid #2c3e50;
+  color: white;
+  transition: 0.5s;
+  height: 30px;
+  padding: 0;
+}
+
+.delete-button:hover {
+  background-color: #151e27;
+  border: 2px solid #151e27;
+}
+
+/* 表 */
+.title-column {
+  width: 30%;
+}
+
+.date-column {
+  width: 20%;
+}
+
+.template-column {
+  width: 20%;
+}
+
+.timestamp-column {
+  width: 20%;
+}
+
+.delete-button-column {
+  width: 10%;
 }
 
 /* リンク */

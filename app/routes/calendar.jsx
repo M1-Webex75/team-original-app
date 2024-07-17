@@ -56,15 +56,17 @@ export default function Index() {
         <div className="app-title">
           <h1>メモカレ</h1>
         </div>
-        <button className="calendar-button">Calendar</button>
-        <button
-          className="memolist-button"
-          onClick={() => navigate("/demo-temp1")}
-        >
-          Memo List
-        </button>
+        <div className="header-buttons">
+          <button className="calendar-button">Calendar</button>
+          <button
+            className="memolist-button"
+            onClick={() => navigate("/demo-temp1")}
+          >
+            Memo List
+          </button>
+        </div>
       </div>
-      <div>
+      <div className="calendar-section">
         <FullCalendar
           plugins={[dayGridPlugin, timeGridPlugin]}
           initialView="dayGridMonth"

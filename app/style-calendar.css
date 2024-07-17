@@ -42,6 +42,7 @@ button:hover {
 }
 
 /* ヘッダーセクション*/
+/* ヘッダーセクション*/
 .header-section {
   background-color: var(--main-color);
   color: white;
@@ -51,22 +52,40 @@ button:hover {
   text-align: left;
 }
 
-.header-section,
-.app-title {
-  text-align: left;
-}
-
-.header-section,
+/* ボタンのコンテナ */
 .header-buttons {
   text-align: center;
 }
 
-.memolist-button {
-  margin-right: 3em;
-  height: 50px;
+/* ヘッダー内ボタンの個別設定 */
+
+.memolist-button,
+.calendar-button {
+  height: 55px;
   text-align: center;
   margin-top: 0;
   margin-bottom: 0;
+  border: 2px solid var(--main-color);
+  border-color: var(--main-color);
+  background: var(--main-color);
+}
+
+.memolist-button {
+  margin-left: 5%;
+}
+
+.calendar-button {
+  margin-right: 5%;
+  border-bottom: 5px solid white;
+  font-weight: 800;
+}
+
+.calendar-button:hover {
+  text-decoration: underline;
+  background-color: var(--main-color);
+  border: none;
+  border-bottom: 5px solid rgb(255, 255, 255);
+  box-shadow: none;
 }
 
 .memolist-button:hover {
@@ -76,19 +95,41 @@ button:hover {
   box-shadow: none;
 }
 
-.calendar-button {
-  margin-left: 3em;
-  height: 50px;
-  text-align: center;
-  margin-top: 0;
-  margin-bottom: 0;
-  border-bottom: 5px solid rgb(255, 255, 255);
-  font-weight: 800;
+/* カレンダーセクション */
+.calendar-section {
+  margin: 20px 5%; /* 上下 左右*/
+  padding: 20px 5%; /*上 左右 下*/
+  border-radius: 4px;
+  background-color: white;
 }
 
-.calendar-button:hover {
-  background-color: var(--main-color);
-  border: none;
-  border-bottom: 5px solid rgb(255, 255, 255);
-  box-shadow: none;
+/* FullCalendar ヘッダーのカスタムスタイル */
+.fc-header-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px; /* 必要に応じて調整 */
+}
+
+.fc-toolbar-chunk {
+  flex: 1;
+}
+
+.fc-toolbar-title {
+  text-align: center;
+  font-size: 1.5em; /* タイトルのフォントサイズを調整 */
+  font-weight: bold;
+  flex: 1; /* タイトルを中央に揃える */
+}
+
+/* 左側のボタンを左揃えに */
+.fc-toolbar-chunk:first-child {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* 右側のボタンを右揃えに */
+.fc-toolbar-chunk:last-child {
+  display: flex;
+  justify-content: flex-end;
 }

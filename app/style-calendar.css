@@ -1,0 +1,135 @@
+:root {
+  --main-color: #27acd9;
+  --hover-color: #0056b3;
+  --accent-color: #007bff;
+  --light-color: #e0f7ff;
+}
+
+/* グローバルスタイル */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(245, 245, 245); /*背景色 */
+  color: #333;
+}
+
+h1 {
+  margin: 0;
+  color: white;
+}
+
+button {
+  display: inline;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  width: 120px;
+  height: 40px;
+  font-weight: bold;
+  border: 2px solid var(--main-color);
+  background: var(--main-color);
+  color: #fff;
+  transition: 0.5s;
+  margin: 1%;
+  padding: 1%;
+}
+/* ボタンにカーソルがあたっているとき */
+button:hover {
+  background-color: var(--hover-color);
+  border: 2px solid var(--hover-color);
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+}
+
+/* ヘッダーセクション*/
+/* ヘッダーセクション*/
+.header-section {
+  background-color: var(--main-color);
+  color: white;
+  margin: 0px;
+  padding: 1em 2em;
+  padding-bottom: 0px;
+  text-align: left;
+}
+
+/* ボタンのコンテナ */
+.header-buttons {
+  text-align: center;
+}
+
+/* ヘッダー内ボタンの個別設定 */
+
+.memolist-button,
+.calendar-button {
+  height: 55px;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  border: 2px solid var(--main-color);
+  border-color: var(--main-color);
+  background: var(--main-color);
+}
+
+.memolist-button {
+  margin-left: 5%;
+}
+
+.calendar-button {
+  margin-right: 5%;
+  border-bottom: 5px solid white;
+  font-weight: 800;
+}
+
+.calendar-button:hover {
+  text-decoration: underline;
+  background-color: var(--main-color);
+  border: none;
+  border-bottom: 5px solid rgb(255, 255, 255);
+  box-shadow: none;
+}
+
+.memolist-button:hover {
+  text-decoration: underline;
+  background-color: var(--main-color);
+  border: none;
+  box-shadow: none;
+}
+
+/* カレンダーセクション */
+.calendar-section {
+  margin: 20px 5%; /* 上下 左右*/
+  padding: 20px 5%; /*上 左右 下*/
+  border-radius: 4px;
+  background-color: white;
+}
+
+/* FullCalendar ヘッダーのカスタムスタイル */
+.fc-header-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px; /* 必要に応じて調整 */
+}
+
+.fc-toolbar-chunk {
+  flex: 1;
+}
+
+.fc-toolbar-title {
+  text-align: center;
+  font-size: 1.5em; /* タイトルのフォントサイズを調整 */
+  font-weight: bold;
+  flex: 1; /* タイトルを中央に揃える */
+}
+
+/* 左側のボタンを左揃えに */
+.fc-toolbar-chunk:first-child {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* 右側のボタンを右揃えに */
+.fc-toolbar-chunk:last-child {
+  display: flex;
+  justify-content: flex-end;
+}

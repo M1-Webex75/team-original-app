@@ -1,0 +1,189 @@
+:root {
+  --main-color: #27acd9;
+  --hover-color: #0056b3;
+  --accent-color: #007bff;
+  --light-color: #e0f7ff;
+}
+
+/* グローバルスタイル */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(245, 245, 245); /*背景色 */
+  color: #333;
+}
+
+button {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  width: 120px;
+  height: 50px;
+  font-weight: bold;
+  color: white;
+  transition: 0.5s;
+  margin: 5px;
+  padding: 5px;
+}
+/* ボタンにカーソルがあたっているとき */
+/* button:hover {
+  background-color: var(--hover-color);
+  border: 2px solid var(--hover-color);
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+/* } */
+
+/* プルダウン */
+select {
+  height: 25px;
+  width: 75px;
+}
+
+/* テーブル */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* 見出し行 */
+th {
+  background-color: var(--light-color);
+  color: var(--accent-color);
+}
+
+/* 表の各行にカーソルがあたったときの色 */
+tr:hover {
+  background-color: #f1f9ff;
+}
+
+h1 {
+  text-align: left;
+  margin: 0;
+  color: white;
+}
+
+h2 {
+  text-align: left;
+}
+
+/* ヘッダーセクション*/
+.header-section {
+  background-color: var(--main-color);
+  color: white;
+  margin: 0px;
+  padding: 1em 2em;
+  padding-bottom: 0px;
+  text-align: left;
+}
+
+/* ボタンのコンテナ */
+.header-buttons {
+  text-align: center;
+}
+
+/* ヘッダー内ボタンの個別設定 */
+
+.memolist-button,
+.calendar-button {
+  height: 55px;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  border: 2px solid var(--main-color);
+  border-color: var(--main-color);
+  background: var(--main-color);
+}
+
+.memolist-button {
+  margin-left: 5%;
+  border-bottom: 5px solid white;
+  font-weight: 800;
+}
+
+.calendar-button {
+  margin-right: 5%;
+}
+
+.memolist-button:hover {
+  text-decoration: underline;
+  background-color: var(--main-color);
+  border: none;
+  border-bottom: 5px solid rgb(255, 255, 255);
+  box-shadow: none;
+}
+
+.calendar-button:hover {
+  text-decoration: underline;
+  background-color: var(--main-color);
+  border: none;
+  box-shadow: none;
+}
+
+/* 新規作成セクション */
+.new-memo-section {
+  margin: 2em 5%; /* 上下 左右*/
+  padding: 1em 5% 1em; /*上 左右 下*/
+  border-radius: 4px;
+  background-color: white;
+  text-align: center;
+}
+
+.new-memo-button {
+  text-align: center;
+  border: none;
+  border-color: var(--main-color);
+  background: var(--main-color);
+}
+
+.new-memo-button:hover {
+  background-color: var(--hover-color);
+}
+
+/* メモリストセクション */
+.memo-list-section {
+  margin: 2em 5%;
+  padding: 1em 5% 1em; /*上 左右 下*/
+  border-radius: 4px;
+  background-color: white;
+}
+
+/* フィルターセクション */
+
+.sort-target-button,
+.sort-ascdesc-button {
+  font-weight: bold;
+  background: #2c3e50;
+  border: 2px solid #2c3e50;
+  color: white;
+  transition: 0.5s;
+  height: 30px;
+  padding: 0;
+}
+/* ボタンにカーソルがあたっているとき */
+.sort-target-button:hover,
+.sort-ascdesc-button:hover {
+  background-color: #151e27;
+  border: 2px solid #151e27;
+}
+
+/* リンク */
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

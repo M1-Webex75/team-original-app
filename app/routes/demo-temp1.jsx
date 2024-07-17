@@ -14,6 +14,9 @@ import db from "../firebase";
 import { Link } from "@remix-run/react";
 import PullDown from "./pulldown";
 import { useNavigate } from "react-router-dom";
+import stylesDemoTemp1 from "../style-demo-temp1.css?url";
+
+export const links = () => [{ rel: "stylesheet", href: stylesDemoTemp1 }];
 
 const Table = ({ data, updateTimestamp }) => {
   return (
@@ -133,20 +136,34 @@ export default function DemoTemp1() {
   };
 
   return (
-    <>
-      <h1>メモ一覧</h1>
-      <button onClick={() => navigate("/calender")}>Calender</button>
-      <button>Memo List</button>
+    <div>
+      <div className="header-section">
+        <div className="app-title">
+          <h1>メモカレ</h1>
+        </div>
+        <div className="header-buttons">
+          <button
+            className="calendar-button"
+            onClick={() => navigate("/calendar")}
+          >
+            Calendar
+          </button>
+          <button className="memolist-button">Memo List</button>
+        </div>
+      </div>
 
-      <div>
+      <div className="new-memo-section">
         <h2>新規作成</h2>
-        <PullDown
-          labelText="テンプレートの種類を選択："
-          selectedOption={selectedOptionNewMemo}
-          setSelectedOption={setselectedOptionNewMemo}
-        ></PullDown>
+        <div className="filter-pulldown">
+          <PullDown
+            labelText="テンプレートの種類を選択："
+            selectedOption={selectedOptionNewMemo}
+            setSelectedOption={setselectedOptionNewMemo}
+          ></PullDown>
+        </div>
 
         <button
+          className="new-memo-button"
           onClick={async () => {
             // 新しいメモのデータ
             const newMemoData = {
@@ -175,28 +192,28 @@ export default function DemoTemp1() {
       </div>
 
       {/* メモ一覧 */}
-      <div>
+      <div className={"memo-list-section"}>
         <h2>メモ一覧</h2>
+        <div className="sort-section">
+          ソート：
+          <button className="sort-target-button" onClick={toggleSortField}>
+            {sortField === "timestamp" ? "Time" : "Date"}
+          </button>
+          <button className="sort-ascdesc-button" onClick={toggleSortOrder}>
+            {sortOrder === "desc" ? "降順" : "昇順"}
+          </button>
+          <PullDown
+            labelText="テンプレートでフィルター："
+            selectedOption={selectedOptionFilter}
+            setSelectedOption={setSelectedOptionFilter}
+          ></PullDown>
+        </div>
 
-        <button onClick={toggleSortField}>
-          {sortField === "timestamp" ? "Time" : "Date"}
-        </button>
-
-        <button onClick={toggleSortOrder}>
-          {sortOrder === "desc" ? "降順" : "昇順"}
-        </button>
-
-        <PullDown
-          labelText="テンプレートでフィルター："
-          selectedOption={selectedOptionFilter}
-          setSelectedOption={setSelectedOptionFilter}
-        ></PullDown>
+        <Table
+          data={makeDisplayData(posts, selectedOptionFilter)}
+          updateTimestamp={updateTimestamp}
+        ></Table>
       </div>
-
-      <Table
-        data={makeDisplayData(posts, selectedOptionFilter)}
-        updateTimestamp={updateTimestamp}
-      ></Table>
-    </>
+    </div>
   );
 }

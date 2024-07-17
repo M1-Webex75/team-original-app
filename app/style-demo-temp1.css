@@ -114,7 +114,7 @@ h2 {
   box-shadow: none;
 }
 
-.calender-button {
+.calendar-button {
   margin-right: 3em;
   height: 50px;
   text-align: center;
@@ -122,7 +122,7 @@ h2 {
   margin-bottom: 0;
 }
 
-.calender-button:hover {
+.calendar-button:hover {
   text-decoration: underline;
   background-color: var(--main-color);
   border: none;

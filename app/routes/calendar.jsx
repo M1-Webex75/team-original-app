@@ -17,7 +17,9 @@ import {
 import db from "../firebase";
 import { Link } from "@remix-run/react";
 import PullDown from "./pulldown";
-import "../style-calender.css";
+import styleCalendar from "../style-calendar.css?url";
+
+export const links = () => [{ rel: "stylesheet", href: styleCalendar }];
 
 const language = "ja";
 export default function Index() {
@@ -54,7 +56,7 @@ export default function Index() {
         <div className="app-title">
           <h1>メモカレ</h1>
         </div>
-        <button className="calender-button">Calender</button>
+        <button className="calendar-button">Calendar</button>
         <button
           className="memolist-button"
           onClick={() => navigate("/demo-temp1")}

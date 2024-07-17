@@ -13,7 +13,9 @@ import db from "../firebase";
 import { Link } from "@remix-run/react";
 import PullDown from "./pulldown";
 import { useNavigate } from "react-router-dom";
-import styles from "../style-demo-temp1.css";
+import stylesDemoTemp1 from "../style-demo-temp1.css?url";
+
+export const links = () => [{ rel: "stylesheet", href: stylesDemoTemp1 }];
 
 const Table = ({ data, updateTimestamp }) => {
   return (
@@ -130,10 +132,10 @@ export default function DemoTemp1() {
         </div>
         <div className="header-buttons">
           <button
-            className="calender-button"
-            onClick={() => navigate("/calender")}
+            className="calendar-button"
+            onClick={() => navigate("/calendar")}
           >
-            Calender
+            Calendar
           </button>
           <button className="memolist-button">Memo List</button>
         </div>

@@ -76,7 +76,7 @@ button:hover {
   box-shadow: none;
 }
 
-.calender-button {
+.calendar-button {
   margin-left: 3em;
   height: 50px;
   text-align: center;
@@ -86,7 +86,7 @@ button:hover {
   font-weight: 800;
 }
 
-.calender-button:hover {
+.calendar-button:hover {
   background-color: var(--main-color);
   border: none;
   border-bottom: 5px solid rgb(255, 255, 255);

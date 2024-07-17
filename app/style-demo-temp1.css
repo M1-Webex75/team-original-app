@@ -15,27 +15,26 @@ body {
 }
 
 button {
-  display: inline;
+  display: inline-block;
   text-align: center;
   vertical-align: middle;
   text-decoration: none;
   width: 120px;
   height: 50px;
   font-weight: bold;
-  border: 2px solid var(--main-color);
-  background: var(--main-color);
-  color: #fff;
+  color: white;
   transition: 0.5s;
   margin: 5px;
   padding: 5px;
 }
 /* ボタンにカーソルがあたっているとき */
-button:hover {
+/* button:hover {
   background-color: var(--hover-color);
   border: 2px solid var(--hover-color);
   /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
-}
+/* } */
 
+/* プルダウン */
 select {
   height: 25px;
   width: 75px;
@@ -70,6 +69,7 @@ tr:hover {
 }
 
 h1 {
+  text-align: left;
   margin: 0;
   color: white;
 }
@@ -88,38 +88,40 @@ h2 {
   text-align: left;
 }
 
-.app-title {
-  text-align: left;
-}
-
-.header-section,
+/* ボタンのコンテナ */
 .header-buttons {
   text-align: center;
 }
 
-.memolist-button {
-  margin-left: 3em;
+/* ヘッダー内ボタンの個別設定 */
+
+.memolist-button,
+.calendar-button {
   height: 50px;
   text-align: center;
   margin-top: 0;
   margin-bottom: 0;
-  border-bottom: 5px solid rgb(255, 255, 255);
+  border: 2px solid var(--main-color);
+  border-color: var(--main-color);
+  background: var(--main-color);
+}
+
+.memolist-button {
+  margin-left: 5%;
+  border-bottom: 5px solid white;
   font-weight: 800;
 }
 
+.calendar-button {
+  margin-right: 5%;
+}
+
 .memolist-button:hover {
+  text-decoration: underline;
   background-color: var(--main-color);
   border: none;
   border-bottom: 5px solid rgb(255, 255, 255);
   box-shadow: none;
-}
-
-.calendar-button {
-  margin-right: 3em;
-  height: 50px;
-  text-align: center;
-  margin-top: 0;
-  margin-bottom: 0;
 }
 
 .calendar-button:hover {
@@ -131,7 +133,7 @@ h2 {
 
 /* 新規作成セクション */
 .new-memo-section {
-  margin: 2em 5%;
+  margin: 2em 5%; /* 上下 左右*/
   padding: 1em 5% 1em; /*上 左右 下*/
   border-radius: 4px;
   background-color: white;
@@ -140,6 +142,13 @@ h2 {
 
 .new-memo-button {
   text-align: center;
+  border: none;
+  border-color: var(--main-color);
+  background: var(--main-color);
+}
+
+.new-memo-button:hover {
+  background-color: var(--hover-color);
 }
 
 /* メモリストセクション */
@@ -152,21 +161,7 @@ h2 {
 
 /* フィルターセクション */
 
-.sort-target-button {
-  font-weight: bold;
-  background: #2c3e50;
-  border: 2px solid #2c3e50;
-  color: white;
-  transition: 0.5s;
-  height: 30px;
-  padding: 0;
-}
-/* ボタンにカーソルがあたっているとき */
-.sort-target-button:hover {
-  background-color: #151e27;
-  border: 2px solid #151e27;
-}
-
+.sort-target-button,
 .sort-ascdesc-button {
   font-weight: bold;
   background: #2c3e50;
@@ -177,6 +172,7 @@ h2 {
   padding: 0;
 }
 /* ボタンにカーソルがあたっているとき */
+.sort-target-button:hover,
 .sort-ascdesc-button:hover {
   background-color: #151e27;
   border: 2px solid #151e27;

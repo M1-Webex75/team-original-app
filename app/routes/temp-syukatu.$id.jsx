@@ -8,6 +8,9 @@ import {
 } from "firebase/firestore";
 import db from "../firebase";
 import { Link, useParams } from "react-router-dom";
+import styleTemp from "../style-temple.css?url";
+
+export const links = () => [{ rel: "stylesheet", href: styleTemp }];
 
 const TempSyukatu = () => {
   const { id } = useParams();
@@ -97,76 +100,104 @@ const TempSyukatu = () => {
 
   return (
     <div>
-      <h1>就活</h1>
-      <Link to="/demo-temp1">戻る</Link>
+      <div className="header-section">
+        <div className="app-title">
+          <h1>メモカレ</h1>
+        </div>
+        <div className="header-title">
+          <h2>就活</h2>
+        </div>
+        <div className="return-button">
+          <Link to="/demo-temp1">戻る</Link>
+        </div>
+      </div>
 
       {post && (
         <div>
-          <p>{post.title}</p>
-          <label>
-            Title:
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-          </label>
-          <label>
-            Date:
-            <input
-              type="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-            />
-          </label>
-          <label>
-            ES:
-            <input
-              type="text"
-              value={text1}
-              onChange={(e) => setText1(e.target.value)}
-            />
-          </label>
-          <label>
-            ガクチカ:
-            <input
-              type="text"
-              value={text2}
-              onChange={(e) => setText2(e.target.value)}
-            />
-          </label>
-          <label>
-            企業分析:
-            <input
-              type="text"
-              value={text3}
-              onChange={(e) => setText3(e.target.value)}
-            />
-          </label>
-          <label>
-            面接で聞かれたこと:
-            <input
-              type="text"
-              value={text4}
-              onChange={(e) => setText4(e.target.value)}
-            />
-          </label>
-          {fields.map((field, index) => (
-            <div key={index}>
-              <label>
-                {field.name}:
-                <input
-                  type="text"
-                  value={field.text}
-                  onChange={(e) => handleFieldChange(index, e)}
-                />
-              </label>
-            </div>
-          ))}
+          <div className="post-title-temp">
+            <p>{post.title}</p>
+          </div>
+          <div className="label-section">
+            <label>
+              Title:
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </label>
+            <label>
+              Date:
+              <input
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
+            </label>
+          </div>
+          <div className="label-component">
+            <label>
+              ES:
+              <input
+                className="textbox"
+                type="text"
+                value={text1}
+                onChange={(e) => setText1(e.target.value)}
+              />
+            </label>
+            <label>
+              ガクチカ:
+              <input
+                className="textbox"
+                type="text"
+                value={text2}
+                onChange={(e) => setText2(e.target.value)}
+              />
+            </label>
+            <label>
+              企業分析:
+              <input
+                className="textbox"
+                type="text"
+                value={text3}
+                onChange={(e) => setText3(e.target.value)}
+              />
+            </label>
+            <label>
+              面接で聞かれたこと:
+              <input
+                className="textbox"
+                type="text"
+                value={text4}
+                onChange={(e) => setText4(e.target.value)}
+              />
+            </label>
+          </div>
+          <div className="add-label-set">
+            {fields.map((field, index) => (
+              <div key={index}>
+                <label className="add-label">
+                  {field.name}:
+                  <input
+                    className="add-textbox"
+                    type="text"
+                    value={field.text}
+                    onChange={(e) => handleFieldChange(index, e)}
+                  />
+                </label>
+              </div>
+            ))}
+          </div>
         </div>
       )}
-      <button onClick={updatePost}>更新</button>
-      <button onClick={addField}>追加</button>
+      <div className="foot-button">
+        <button className="updata-button" onClick={updatePost}>
+          更新
+        </button>
+        <button className="add-button" onClick={addField}>
+          追加
+        </button>
+      </div>
       {message && <div>{message}</div>}
     </div>
   );

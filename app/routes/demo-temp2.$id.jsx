@@ -9,6 +9,9 @@ import {
 import db from "../firebase";
 import { Link, useParams } from "react-router-dom";
 import PullDown from "./pulldown";
+import styleTemp from "../style-temple.css?url";
+
+export const links = () => [{ rel: "stylesheet", href: styleTemp }];
 
 const TempNo = () => {
   const { id } = useParams(); // 選択したデータのIDを取得
@@ -66,47 +69,58 @@ const TempNo = () => {
 
   return (
     <div>
-      <h1>未選択</h1>
-      <Link to="/demo-temp1">戻る</Link>
+      <div className="header-section">
+        <div className="app-title">
+          <h1>メモカレ</h1>
+        </div>
+        <div className="header-title">
+          <h2>未選択</h2>
+        </div>
+        <div className="return-button">
+          <Link to="/demo-temp1">戻る</Link>
+        </div>
+      </div>
 
       {post && (
         <div>
-          <PullDown
-            labelText="テンプレートの種類を選択："
-            selectedOption={selectedOptionNewMemo}
-            setSelectedOption={setselectedOptionNewMemo}
-          ></PullDown>
-          <p>
-            {post.title}, {post.text}
-          </p>
-          <label>
-            Title:
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-          </label>
-          <label>
-            Text:
-            <input
-              type="text"
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-            />
-          </label>
-          <label>
-            Date:
-            <input
-              type="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-            />
-          </label>
+          <div className="filter-title-section">
+            <div className="filter-pulldown">
+              <PullDown
+                labelText="テンプレートの種類を選択："
+                selectedOption={selectedOptionNewMemo}
+                setSelectedOption={setselectedOptionNewMemo}
+              ></PullDown>
+            </div>
+            <div className="post-title">
+              <p>{post.title}</p>
+            </div>
+          </div>
+          <div className="label-section">
+            <label>
+              Title:
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </label>
+            <label>
+              Date:
+              <input
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
+            </label>
+          </div>
         </div>
       )}
-      <button onClick={updatePost}>更新</button>
-      {message && <div>{message}</div>}
+      <div className="foot-button">
+        <button className="updata-button" onClick={updatePost}>
+          更新
+        </button>
+      </div>
+      <div className="updata-call">{message && <div>{message}</div>}</div>
     </div>
   );
 };

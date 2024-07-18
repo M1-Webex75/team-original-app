@@ -1,0 +1,268 @@
+:root {
+  --main-color: #27acd9;
+  --hover-color: #0056b3;
+  --accent-color: #007bff;
+  --light-color: #e0f7ff;
+}
+
+/* グローバルスタイル */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(245, 245, 245); /*背景色 */
+  color: #333;
+}
+
+button {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  width: 120px;
+  height: 50px;
+  font-weight: bold;
+  color: white;
+  transition: 0.5s;
+  margin: 5px;
+  padding: 5px;
+}
+/* ボタンにカーソルがあたっているとき */
+/* button:hover {
+    background-color: var(--hover-color);
+    border: 2px solid var(--hover-color);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+/* } */
+
+/* プルダウン */
+select {
+  height: 25px;
+  width: 75px;
+}
+
+/* テーブル */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* 見出し行 */
+th {
+  background-color: var(--light-color);
+  color: var(--accent-color);
+}
+
+/* 表の各行にカーソルがあたったときの色 */
+tr:hover {
+  background-color: #f1f9ff;
+}
+
+h1 {
+  text-align: left;
+  margin: 0;
+  color: white;
+}
+
+h2 {
+  text-align: center;
+}
+
+label {
+  margin-top: 30px;
+}
+
+/* ヘッダーセクション*/
+.header-section {
+  background-color: var(--main-color);
+  color: white;
+  margin: 0px;
+  padding: 1em 2em;
+  padding-bottom: 0px;
+  /* text-align: left; */
+  display: flex;
+}
+
+/* ボタンのコンテナ */
+.header-buttons {
+  text-align: center;
+}
+
+.header-title {
+  top: 0;
+  color: white;
+  position: absolute;
+  margin-left: 47.5%;
+}
+
+/* ヘッダー内ボタンの個別設定 */
+
+.return-button {
+  height: 55px;
+  text-align: right;
+  margin-left: 80%;
+  border: 2px solid var(--main-color);
+  border-color: var(--main-color);
+  background: var(--main-color);
+}
+
+.return-button {
+  margin-right: 5%;
+  color: white;
+}
+
+/* セクション */
+.post-title-temp,
+.filter-title-section {
+  margin: 2em 5%; /* 上下 左右*/
+  padding: 1em 5% 1em; /*上 左右 下*/
+  border-radius: 4px;
+  background-color: white;
+  text-align: center;
+}
+
+/* メモリストセクション */
+.memo-list-section {
+  margin: 2em 5%;
+  padding: 1em 5% 1em; /*上 左右 下*/
+  border-radius: 4px;
+  background-color: white;
+}
+
+.delete-button {
+  font-weight: bold;
+  background: #2c3e50;
+  border: 2px solid #2c3e50;
+  color: white;
+  transition: 0.5s;
+  height: 30px;
+  padding: 0;
+}
+
+/* ラベルセクション */
+.label-section {
+  margin: 2em 5%;
+  padding: 1em 5% 1em; /*上 左右 下*/
+  border-radius: 4px;
+  background-color: white;
+  text-align: center;
+}
+
+.textbox {
+  margin-top: 20px;
+  width: 200px;
+  height: auto;
+  min-height: 50px;
+  min-width: 300px;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+.label-component,
+.add-label-set {
+  /* .add-label-setを追加 */
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+}
+
+.label-component label,
+.add-label-set > div {
+  /* .add-label-set > divを追加 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-label-set {
+  display: flex;
+  flex-wrap: wrap; /* 追加 */
+}
+
+.add-label-set > div {
+  flex: 1 0 25%; /* 追加 */
+}
+
+.add-label {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.add-textbox {
+  margin-top: 20px;
+  width: 200px;
+  height: auto;
+  min-height: 50px;
+  min-width: 300px;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+/* フットボタン */
+.foot-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* 必要に応じて調整 */
+}
+
+.add-button,
+.updata-button {
+  text-align: center;
+  border: none;
+  border-color: var(--main-color);
+  background: var(--main-color);
+  margin: 0 10px; /* ボタン間のスペースを追加 */
+}
+
+.updata-button:hover {
+  background-color: var(--hover-color);
+}
+
+.updata-call {
+  text-align: center;
+  margin: 47.5%;
+}
+/* 表 */
+.title-column {
+  width: 30%;
+}
+
+.date-column {
+  width: 20%;
+}
+
+.template-column {
+  width: 20%;
+}
+
+.timestamp-column {
+  width: 20%;
+}
+
+.delete-button-column {
+  width: 10%;
+}
+
+/* リンク */
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
